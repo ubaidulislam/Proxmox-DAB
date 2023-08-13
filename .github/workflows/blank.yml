@@ -27,6 +27,9 @@ jobs:
       
       - name: Create trusted.gpg.d directory
         run: mkdir -p /etc/apt/trusted.gpg.d/
+        
+      - name: Create blank gpg key
+        run: touch /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
       
       - uses: wei/wget@v1
         with:
