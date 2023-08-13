@@ -20,18 +20,15 @@ jobs:
     env:
       RUNNER_ALLOW_RUNASROOT: 1
     # The type of runner that the job will run on
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - uses: myci-actions/add-deb-repo@11
-        with:
-          repo: deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription
-          repo-name: proxmox
-          keys-asc: https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg
+      - name: Download & Install DAB
+        run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && sudo dpkg -i dab_3.5.0_all.deb
     
       # Runs a single command using the runners shell
       - name: Run a one-line script
