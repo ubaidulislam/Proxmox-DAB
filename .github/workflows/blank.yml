@@ -27,6 +27,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
+      - name: Update sources
+        run: sudo apt-get update
+
+      - name: Install LXC
+        run: sudo apt-get install lxc -y
+
       - name: Download & Install DAB
         run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && sudo dpkg -i dab_3.5.0_all.deb
     
