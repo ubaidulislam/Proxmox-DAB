@@ -40,6 +40,9 @@ jobs:
       - name: Install libuuid-perl
         run: apt-get install libuuid-perl -y
 
+      - name: Install make
+        run: apt-get install make -y
+
       - name: Download & Install DAB
         run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && dpkg -i dab_3.5.0_all.deb
 
