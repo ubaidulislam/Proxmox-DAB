@@ -27,7 +27,7 @@ jobs:
       
       - uses: wei/wget@v1
         with:
-          args: -O https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg 
+          args: -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg 
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
