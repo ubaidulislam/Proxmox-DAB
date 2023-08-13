@@ -32,16 +32,16 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Update sources
-        run: sudo apt-get update
+        run: apt-get update
 
       - name: Install LXC
-        run: sudo apt-get install lxc -y
+        run: apt-get install lxc -y
 
       - name: Install libuuid-perl
-        run: sudo apt-get install libuuid-perl -y
+        run: apt-get install libuuid-perl -y
 
       - name: Download & Install DAB
-        run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && sudo dpkg -i dab_3.5.0_all.deb
+        run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && dpkg -i dab_3.5.0_all.deb
 
       - name: build application
         run: make
