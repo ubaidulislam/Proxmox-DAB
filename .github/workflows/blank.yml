@@ -38,6 +38,9 @@ jobs:
 
       - name: Download & Install DAB
         run: wget http://download.proxmox.com/debian/dists/bookworm/pve-no-subscription/binary-amd64/dab_3.5.0_all.deb && sudo dpkg -i dab_3.5.0_all.deb
+
+      - name: build application
+        run: make
     
       # Runs a single command using the runners shell
       - name: Run a one-line script
