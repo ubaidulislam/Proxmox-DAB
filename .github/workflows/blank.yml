@@ -37,6 +37,9 @@ jobs:
       - name: Install LXC
         run: apt-get install lxc -y
 
+      - name: Install dnsmasq
+        run: apt-get install dnsmasq -y
+
       - name: Install libuuid-perl
         run: apt-get install libuuid-perl -y
 
