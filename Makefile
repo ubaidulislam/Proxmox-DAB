@@ -3,7 +3,7 @@ BASEDIR:=$(shell dab basedir)
 all: info/init_ok
 	dab bootstrap --minimal
 	# List of packages to install
-	dab install sudo unattended-upgrades apt-listchanges locales software-properties-common dirmngr apt-transport-https gnupg2
+	dab install sudo unattended-upgrades apt-listchanges locales dirmngr apt-transport-https gnupg2
 
 	# Set locale
 	echo "en_GB.UTF-8" > ${BASEDIR}/etc/locale
@@ -20,6 +20,8 @@ all: info/init_ok
 	# place the SSH public keys in the relevant directory with passwordless sudo
 	dab exec useradd -r -m -s /bin/bash ansible
 	wget -O ${BASEDIR}/etc/ssh/authorized_keys_ansible https://github.com/ubaidulislam.keys
+	mkdir ${BASEDIR}/etc/sudoers.d/
+	touch ${BASEDIR}/etc/sudoers.d/ansible
 	echo 'ansible ALL=(ALL) NOPASSWD: ALL' > ${BASEDIR}/etc/sudoers.d/ansible
 	dab exec bash -c "chmod 440 /etc/sudoers.d/ansible"
 
