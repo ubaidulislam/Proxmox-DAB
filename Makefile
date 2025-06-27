@@ -35,8 +35,8 @@ all: info/init_ok
 	# Set up unattended upgrades
 	dab exec echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | debconf-set-selections
 	dab exec dpkg-reconfigure -f noninteractive unattended-upgrades
-	wget -O ${BASEDIR}/etc/apt/apt.conf.d/20auto-upgrades https://raw.githubusercontent.com/ubaidulislam/Debian-11/main/lxc/20auto-upgrades
-	wget -O ${BASEDIR}/etc/apt/apt.conf.d/50unattended-upgrades https://raw.githubusercontent.com/ubaidulislam/Debian-11/main/lxc/50unattended-upgrades
+	wget -O ${BASEDIR}/etc/apt/apt.conf.d/20auto-upgrades https://raw.githubusercontent.com/ubaidulislam/Proxmox-DAB/refs/heads/main/lxc/20auto-upgrades
+	wget -O ${BASEDIR}/etc/apt/apt.conf.d/50unattended-upgrades https://raw.githubusercontent.com/ubaidulislam/Proxmox-DAB/refs/heads/main/lxc/50unattended-upgrades
 	dab exec unattended-upgrades --dry-run
 
 	# Clean up packages and build
