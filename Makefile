@@ -39,6 +39,10 @@ all: info/init_ok
 	wget -O ${BASEDIR}/etc/apt/apt.conf.d/50unattended-upgrades https://raw.githubusercontent.com/ubaidulislam/Proxmox-DAB/refs/heads/main/lxc/50unattended-upgrades
 	dab exec unattended-upgrades --dry-run
 
+	cp rc-local.service ${BASEDIR}/etc/systemd/system/rc-local.service
+	install -m 0755 rc.local ${BASEDIR}/etc/rc.local
+	dab exec systemctl enable rc-local
+
 	# Clean up packages and build
 	dab exec apt-get autoremove && apt-get clean
 	dab finalize --compressor zstd-max
